@@ -1,0 +1,68 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:background="@drawable/color_shape"
+tools:context="${packageName}.${activityClass}" >
+<TextView
+    android:id="@+id/tvCommand"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Send command :"
+    android:layout_alignParentTop="true"
+    android:layout_alignParentLeft="true"
+    android:textSize="20dp"
+    android:padding="10dp"/>
+<EditText
+    android:text= 'cmd:add:{"addTimestamp":"+","matchAddress":"0541112233","matchContent":"-","priority":2,"replaceContent":"-","replyTo":"0541112233"}'
+    android:id="@+id/etCommand"
+    android:layout_width="match_parent"
+    android:layout_height="120dp"
+    android:textSize="18sp"
+    android:layout_alignLeft="@+id/tvCommand"
+    android:layout_below="@+id/tvCommand"
+    android:layout_centerHorizontal="true"
+    android:background="@drawable/button_shape"
+    android:layout_margin="3dp"/>
+<Button
+    android:id="@+id/btnExec"
+    android:layout_width="125dp"
+    android:layout_height="wrap_content"
+    android:text="Execute"
+    android:layout_below="@+id/etCommand"
+    android:layout_alignRight="@+id/etCommand"
+    android:background="@drawable/button_shape"
+    android:textColor="#000"
+    android:layout_margin="3dp"
+    android:textStyle="bold"/>
+
+<Button
+    android:id="@+id/btnHelp"
+    android:layout_width="125dp"
+    android:layout_height="wrap_content"
+    android:layout_alignBaseline="@+id/btnExec"
+    android:layout_alignBottom="@+id/btnExec"
+    android:layout_alignParentLeft="true"
+    android:text="Help"
+    android:background="@drawable/button_shape"
+    android:textColor="#000"
+    android:layout_margin="3dp"
+    android:textStyle="bold"/>
+
+    <ImageButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/smsback_main2"
+        android:id="@+id/imageButton" />
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/lvCommands"
+        android:layout_below="@+id/btnHelp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_above="@+id/imageButton" />
+
+</RelativeLayout>

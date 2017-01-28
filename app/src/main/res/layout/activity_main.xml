@@ -1,0 +1,89 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/color_shape"
+    tools:context="${packageName}.${activityClass}" >
+
+    <!--<TextView-->
+        <!--android:id="@+id/tvHeader"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="Active Rules :"-->
+        <!--android:layout_alignParentTop="true"-->
+        <!--android:layout_alignParentLeft="true"-->
+        <!--android:textSize="20dp"-->
+        <!--android:padding="10dp"/>-->
+
+    <Button
+        android:text="Console"
+        android:id="@+id/btnConsole"
+        android:layout_width="110dp"
+        android:layout_alignParentLeft="true"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/imageButton"
+        android:background="@drawable/button_shape"
+        android:textColor="#000"
+        android:layout_margin="3dp"
+        android:textStyle="bold"/>
+
+    <Button
+        android:text="Status"
+        android:id="@+id/btnStatus"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/btnConsole"
+        android:layout_above="@+id/imageButton"
+        android:background="@drawable/button_shape"
+        android:textColor="#000"
+        android:layout_margin="3dp"
+        android:textStyle="bold"/>
+
+    <Button
+        android:text="View log"
+        android:id="@+id/btnLog"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/imageButton"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/button_shape"
+        android:textColor="#000"
+        android:layout_margin="3dp"
+        android:textStyle="bold"/>
+    <!--android:layout_alignBottom="@+id/btnExec"-->
+
+
+
+    <ImageButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/smsback_main2"
+        android:id="@+id/imageButton" />
+
+
+    <ListView
+        android:layout_alignParentTop="true"
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btnConsole"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
+        android:id="@+id/lvRules"
+        android:divider="@null"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:gravity="center_vertical"
+        android:dividerHeight="10dp"/>
+    <!--android:background="@drawable/listviewstyle"-->
+    <!--android:layout_below="@+id/tvHeader"-->
+
+</RelativeLayout>
+
+    <!--android:text="Default rules"-->
+    <!--android:id="@+id/btnDefault" />-->
+    <!--android:text="Refresh rules"-->
+    <!--android:id="@+id/btnRefresh" />-->
+    <!--android:text="Log"-->
+    <!--android:id="@+id/btnLog" />-->
