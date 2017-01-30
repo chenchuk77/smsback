@@ -36,7 +36,16 @@ public class LogMonitorActivity extends AppCompatActivity {
     {
 
         File logs_dir = new File(Environment.getExternalStorageDirectory(), LOG_DIRECTORY);
+
+//        if (!logs_dir.exists()) {
+//            logs_dir.mkdirs();
+//        }
+//
         File file = new File(logs_dir, LOG_FILENAME);
+//        if (!file.exists()){
+//
+//        }
+
         StringBuilder sb = new StringBuilder();
         try {
             BufferedReader br = new BufferedReader(new FileReader(file));

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/color_shape"
-    tools:context="${packageName}.${activityClass}" >
+    tools:context="net.devopskb.smsback.LogMonitorActivity" >
 
     <!-- wrapping the linear with relative to add footer image -->
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"

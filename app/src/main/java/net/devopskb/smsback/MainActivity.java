@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         //Log.e(this.getClass().getSimpleName(), "onCreate() called");
         setContentView(R.layout.activity_main);
-
+        Log.e(this.getClass().getSimpleName(), "QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ");
         init();
         refreshRulesListView();
         // disable keyboard on startapp
@@ -92,6 +92,9 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(statusIntent);
             }
         });
+
+
+
 
 //        Button btn_delete = (Button) findViewById(R.id.btnDelete);
 //        btn_delete.setOnClickListener(new View.OnClickListener() {

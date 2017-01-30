@@ -18,6 +18,7 @@ public class Logger {
 
     private Logger(){
         // singleton
+        createLogfile();
         appendToFile("----------------------------------LOGGER STARTED-------------------------");
     }
 
@@ -35,17 +36,36 @@ public class Logger {
         //appendToFile("----------------------------------LOGGER STARTED-------------------------");
     }
 
-    public static Logger getLogger(){
-        return instance;
-    }
-
-    public void appendToFile(String message) {
-        //android.util.Log.e("ok","ok");
+    public static void createLogfile(){
         try {
             File logs_dir = new File(Environment.getExternalStorageDirectory(), LOG_DIRECTORY);
             if (!logs_dir.exists()) {
                 logs_dir.mkdirs();
             }
+
+            File file = new File(logs_dir, LOG_FILENAME);
+
+            if (!file.exists()){
+                    file.createNewFile();
+                }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        appendToFile("----------------------------------NEW FILE CREATED-------------------------");
+    }
+
+    public static Logger getLogger(){
+        return instance;
+    }
+
+    public static void appendToFile(String message) {
+        //android.util.Log.e("ok","ok");
+        try {
+//            if (!logs_dir.exists()) {
+//                logs_dir.mkdirs();
+//            }
+            File logs_dir = new File(Environment.getExternalStorageDirectory(), LOG_DIRECTORY);
             File file = new File(logs_dir, LOG_FILENAME);
             FileWriter fw = new FileWriter(file, true);
             fw.write(message + "\n");
