@@ -1,10 +1,14 @@
 package net.devopskb.smsback;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.WindowManager;
@@ -41,8 +45,8 @@ public class MainActivity extends AppCompatActivity {
     public static final String[] MANAGERS = {"chenchuk@gmail.com", "chen.alkabets@nova-lumos.com"};
 
 
-    private static final Logger logger = LoggerFactory.getLogger(MainActivity.class);
-    // logger.debug("Some log message. Details: {}", someObject.toString());
+    // logger will be init ONLY after user permissions (api level > 22)
+    private static Logger logger;
 
     private RulesArrayAdapter<String> adapter;
     // map of rules by priority
@@ -50,7 +54,8 @@ public class MainActivity extends AppCompatActivity {
     public RulesService service;
 
     public void init() {
-        Log.e(this.getClass().getSimpleName(), "++++++++++++++++++++++++++++++++++++++++++++++++++.");
+        Log.e(this.getClass().getSimpleName(), "starting init()");
+        requestPermissions();
         new SmsListener();
         Log.e(this.getClass().getSimpleName(), "++++++++++++++++++++++++++++++++++++++++++++++++++.");
         service = RulesService.getInstance();
@@ -67,6 +72,39 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    // for api level > 22 (lolipop), need to request user permissions
+    public void requestPermissions(){
+        Integer myApiLevel = Build.VERSION.SDK_INT; // 25 on emulator
+        Integer LolipopApiLevel=Build.VERSION_CODES.LOLLIPOP_MR1; // 22
+        if (myApiLevel > LolipopApiLevel) {
+            ActivityCompat.requestPermissions(this, new String[]{
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                    Manifest.permission.READ_EXTERNAL_STORAGE,
+                    Manifest.permission.RECEIVE_SMS,
+                    Manifest.permission.READ_SMS,
+                    Manifest.permission.SEND_SMS,
+                    Manifest.permission.INTERNET,
+                    Manifest.permission.ACCESS_NETWORK_STATE}, 101);;
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        switch (requestCode) {
+            case 101:
+                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    //granted
+                    Log.e(this.getClass().getSimpleName(), "Permissions granted by user.");
+                    logger = LoggerFactory.getLogger(MainActivity.class);
+                } else {
+                    //not granted
+                    Log.e(this.getClass().getSimpleName(), "Permissions denied by user.");
+                }
+                break;
+            default:
+                super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
+    }
     @Override
     protected void onResume(){
         super.onResume();

@@ -30,6 +30,7 @@
                 android:layout_height="match_parent"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="Small Text"
+                android:fontFamily="monospace"
                 android:id="@+id/tvOutput"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true" />

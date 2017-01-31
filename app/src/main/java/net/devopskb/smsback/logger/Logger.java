@@ -1,9 +1,13 @@
 package net.devopskb.smsback.logger;
 
+import android.Manifest;
+import android.os.Build;
 import android.os.Environment;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+
+import android.support.v4.app.ActivityCompat;
 
 /**
  * Created by chenchuk on 1/29/2016.
@@ -18,8 +22,13 @@ public class Logger {
 
     private Logger(){
         // singleton
+
         createLogfile();
         appendToFile("----------------------------------LOGGER STARTED-------------------------");
+
+
+
+
     }
 
     public static void deleteLogfile(){
